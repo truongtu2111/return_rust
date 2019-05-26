@@ -1,29 +1,18 @@
-use std::io;
-use rand::Rng;
-use std::cmp::Ordering;
 fn main() {
-    println!("Guess  the number!");
+    let mut x = 5;
+    println!("The value of x is: {}",x);
+    x=7;
+    println!("The value of x is: {}",x);
 
-    let serect_number = rand::thread_rng().gen_range(1,101);
-//    println!("The serect number is: {}",serect_number);
+    println!("Use shadow variable for same type");
+    let y =23;
+    println!("The value of y is: {}",y);
+    let y =79;
+    println!("The value of y is: {}",y);
 
-    loop {
-        println!("Please input your guess");
-        let mut guess = String::new();
-        io::stdin().read_line(&mut guess).expect("Failed to read line");
-        let guess:u32 = match guess.trim().parse(){
-            Ok(num)=>num,
-            Err(_)=> continue,
-        };
-        println!("You guessed: {}",guess);
-        match guess.cmp(&serect_number) {
-            Ordering::Less=>println!("Too small!"),
-            Ordering::Greater=>println!("Too big!"),
-            Ordering::Equal=>{
-                println!("You win!");
-                break;
-            },
-        }
-    }
-
+    println!("Use shadow variable for difference type");
+    let string_var = "Truong Quang Tu";
+    println!("The value of string is: {}",string_var);
+    let string_var = string_var.len();
+    println!("The len of string is: {}",string_var);
 }
